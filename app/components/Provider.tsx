@@ -1,0 +1,35 @@
+'use client';
+
+import { ReactNode } from 'react';
+
+interface ProviderProps {
+  children: ReactNode;
+}
+
+export default function Providers({ children }: ProviderProps) {
+  return (
+    <>
+      {children}
+
+      <style jsx global>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      `}</style>
+    </>
+  );
+}
