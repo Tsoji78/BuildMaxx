@@ -15,7 +15,7 @@ export default function About() {
         <div className="page-hero-overlay" />
         <div className="page-hero-content">
           <AnimatedSection animation="fadeInUp">
-            <h1>About BuildSure</h1>
+            <h1>About BuildMax</h1>
           </AnimatedSection>
           <AnimatedSection animation="fadeInUp" delay={150}>
             <p>Innovation, Precision & Excellence in Construction</p>
@@ -31,7 +31,7 @@ export default function About() {
             <div className="about-intro">
               <h2>Who We Are</h2>
               <p>
-                <strong>BUILDSURE INVESTMENT LIMITED</strong> is a forward-thinking construction and technology-driven company 
+                <strong>BuildMax INVESTMENT LIMITED</strong> is a forward-thinking construction and technology-driven company 
                 incorporated under the laws of the Federal Republic of Nigeria. We specialize in building construction, 
                 engineering technology, and the supply of high-quality construction materials.
               </p>
@@ -130,7 +130,7 @@ export default function About() {
             <div className="future-section">
               <h2>Future Outlook</h2>
               <p>
-                BuildSure Investment Limited is poised for expansion across Nigeria and beyond. 
+                BuildMax Investment Limited is poised for expansion across Nigeria and beyond. 
                 We leverage technology to drive efficiency and sustainability in the construction industry. 
                 Our goal is to be recognized as a top-tier firm that blends traditional craftsmanship with modern innovation.
               </p>

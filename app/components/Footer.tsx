@@ -4,21 +4,21 @@
 import Link from 'next/link';
 
 const company = [
-  { href: '/about',          label: 'About Us' },
-  { href: '/team',           label: 'Our Team' },
-  { href: '/certifications', label: 'Certifications' },
-  { href: '/careers',        label: 'Careers' },
+  { href: '/About',          label: 'About Us' },
+  { href: '/Team',           label: 'Our Team' },
+  { href: '/Certifications', label: 'Certifications' },
+  { href: '/Careers',        label: 'Careers' },
 ];
 
 const services = [
-  { href: '/services',   label: 'Investment Advisory' },
-  { href: '/portfolio',  label: 'Portfolio' },
-  { href: '/news',       label: 'News & Insights' },
+  { href: '/Services',   label: 'Investment Advisory' },
+  { href: '/Portfolio',  label: 'Portfolio' },
+  { href: '/News',       label: 'News & Insights' },
 ];
 
 const support = [
-  { href: '/faq',     label: 'FAQ' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/FAQ',     label: 'FAQ' },
+  { href: '/Contact', label: 'Contact' },
 ];
 
 const socials = [

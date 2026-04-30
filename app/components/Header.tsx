@@ -51,10 +51,10 @@ export default function Header() {
 
           {/* ── Logo ── */}
           <Link href="/" className="logo" aria-label="BuildMax home">
-            <svg className="logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path d="M12 2L2 19h20L12 2z" fill="currentColor" />
-            </svg>
-            <span className="logo-text">Build<em>Sure</em></span>
+            <img 
+              src="/assets/uildmaxlogo11.png" 
+              alt="BuildMax" 
+            />
           </Link>
 
           {/* ── Desktop nav ── */}
@@ -128,28 +128,18 @@ export default function Header() {
         .logo {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          color: var(--color-navy);
+          flex-shrink: 0;
           text-decoration: none;
-          flex-shrink: 0;
         }
-        .logo-mark {
-          width: 22px;
-          height: 22px;
-          color: var(--color-gold);
-          flex-shrink: 0;
+        .logo img {
+          height: 8px;
+          max-width: 140px;       /* ← tweak this value (40–56px works for most navbars) */
+          width: 8px;
+          object-fit: left center;
+          display: block;
         }
-        .logo-text {
-          font-family: var(--font-heading);
-          font-size: 1.45rem;
-          font-weight: 700;
-          color: var(--color-navy);
-          letter-spacing: -0.01em;
-        }
-        .logo-text em {
-          font-style: normal;
-          color: var(--color-gold);
-        }
+        
+        
 
         /* ── Nav wrapper ── */
         .nav {

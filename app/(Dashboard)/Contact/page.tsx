@@ -129,7 +129,7 @@ export default function Contact() {
 
             <div className="info-item">
               <strong>Website</strong>
-              <p>www.buildsureinvestment.com</p>
+              <p>www.BuildMaxinvestment.com</p>
             </div>
 
             <div className="map-placeholder">

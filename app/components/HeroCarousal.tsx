@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const HERO_IMAGES = [
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920',
-  'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920',
-  'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920',
-  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920',
+  '/assets/b1.jpg',
+  '/assets/b2.jpg',
+  '/assets/b3.jpg',
+  '/assets/b5.jpg',
 ];
 
 export default function HeroCarousel() {

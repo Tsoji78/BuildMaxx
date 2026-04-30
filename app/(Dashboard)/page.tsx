@@ -22,7 +22,7 @@ export default function Home() {
 
         <div className={styles.heroContent}>
           <AnimatedSection animation="fadeInUp">
-            <span className={styles.eyebrow}>Est. 1999 · Abuja</span>
+            <span className={styles.eyebrow}>Est. 2020 · Abuja</span>
           </AnimatedSection>
 
           <AnimatedSection animation="fadeInUp" delay={100}>
@@ -61,10 +61,10 @@ export default function Home() {
       <section className={styles.stats}>
         <div className={styles.statsInner}>
           {[
-            { value: '$2.4B+', label: 'Assets Under Management' },
-            { value: '150+',   label: 'Properties Acquired' },
-            { value: '25+',    label: 'Years of Experience' },
-            { value: '18',     label: 'Active Markets' },
+            { value: '₦240M+', label: 'Assets Under Management' },
+            { value: '15+',   label: 'Properties Acquired' },
+            { value: '5+',    label: 'Years of Experience' },
+            { value: '8',     label: 'Active Markets' },
           ].map((stat, i) => (
             <AnimatedSection key={stat.label} animation="fadeInUp" delay={i * 100}>
               <div className={styles.stat}>
