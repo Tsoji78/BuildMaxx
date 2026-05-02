@@ -14,7 +14,7 @@ export default function News() {
       <section
         className="page-hero page-hero-img"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=1920)',
+          backgroundImage: 'url("/assets/p16.jpg")',
         }}
       >
         <div className="page-hero-overlay" />

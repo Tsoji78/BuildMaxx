@@ -9,7 +9,7 @@ export default function About() {
       <section
         className="page-hero page-hero-img"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920)',
+          backgroundImage: 'url("/assets/p18.jpg")',
         }}
       >
         <div className="page-hero-overlay" />

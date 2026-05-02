@@ -13,7 +13,7 @@ export default function Team() {
       <section
         className="page-hero page-hero-img"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920)',
+          backgroundImage: 'url("/assets/p19.jpg")',
         }}
       >
         <div className="page-hero-overlay" />

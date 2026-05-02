@@ -52,7 +52,7 @@ export default function Header() {
           {/* ── Logo ── */}
           <Link href="/" className="logo" aria-label="BuildMax home">
             <img 
-              src="/assets/uildmaxlogo11.png" 
+              src="/assets/maxlogo1.png" 
               alt="BuildMax" 
             />
           </Link>
@@ -132,9 +132,9 @@ export default function Header() {
           text-decoration: none;
         }
         .logo img {
-          height: 8px;
-          max-width: 140px;       /* ← tweak this value (40–56px works for most navbars) */
-          width: 8px;
+          height:1px;
+          max-width: 10px;       /* ← tweak this value (40–56px works for most navbars) */
+          width: 1px;
           object-fit: left center;
           display: block;
         }

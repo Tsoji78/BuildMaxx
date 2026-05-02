@@ -50,7 +50,7 @@ export default function Services() {
       <section
         className="page-hero page-hero-img"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1553531889-e6cf28d2e4f0?w=1920)',
+          backgroundImage: 'url("/assets/p19.jpg")',
         }}
       >
         <div className="page-hero-overlay" />

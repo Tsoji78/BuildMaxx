@@ -30,7 +30,7 @@ export default function Contact() {
       <section
         className="page-hero page-hero-img"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920)',
+          backgroundImage: 'url("/assets/p19.jpg")',
         }}
       >
         <div className="page-hero-overlay" />

@@ -101,10 +101,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <Link href="/" className="footer-logo" aria-label="BuildMax home">
-              <svg className="footer-logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path d="M12 2L2 19h20L12 2z" fill="currentColor"/>
-              </svg>
-              Build<em>Max</em>
+               <img 
+              src="/assets/maxlogo1.png" 
+              alt="BuildMax" 
+            />
             </Link>
 
             <p className="tagline">

@@ -8,6 +8,7 @@
     --ink-3    : #1f1f1f
     --gold     : #c9a84c   (warm gold accent)
     --gold-lt  : #e2c47a
+    --gold-dim : rgba(201,168,76,0.18)   ← new
     --cream    : #f5f0e8
     --muted    : #7a7570
   Fonts:
@@ -20,15 +21,16 @@
 
 /* ── CSS custom properties ── */
 .page {
-  --ink:     #0d0d0d;
-  --ink-2:   #161616;
-  --ink-3:   #222;
-  --gold:    #c9a84c;
-  --gold-lt: #e2c47a;
-  --cream:   #f5f0e8;
-  --muted:   #7a7570;
-  --radius:  2px;
-  --ease:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ink:      #0d0d0d;
+  --ink-2:    #161616;
+  --ink-3:    #222;
+  --gold:     #c9a84c;
+  --gold-lt:  #e2c47a;
+  --gold-dim: rgba(201, 168, 76, 0.18); /* new — used by trust indicators */
+  --cream:    #f5f0e8;
+  --muted:    #7a7570;
+  --radius:   2px;
+  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
 
   font-family: 'DM Sans', sans-serif;
   background: var(--ink);
@@ -48,13 +50,19 @@
   overflow: hidden;
 }
 
-.heroMedia {
+/* NEW: custom bg image sits beneath the carousel */
+.heroBgImage {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* Ensure the carousel fills the container */
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .heroMedia > * {
   width: 100%;
   height: 100%;
@@ -69,9 +77,32 @@
     linear-gradient(to top,    rgba(13,13,13,0.70) 0%, transparent 50%);
 }
 
+/* NEW: subtle film-grain texture */
+.heroGrain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.035;
+  background-image: url("/assets/p15.jpg");
+  background-size: 200px 200px;
+  pointer-events: none;
+}
+
+/* NEW: gradient fade from hero into next section */
+.heroFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  z-index: 3;
+  background: linear-gradient(to bottom, transparent, var(--ink));
+  pointer-events: none;
+}
+
 .heroContent {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -80,6 +111,22 @@
   padding-bottom: 6rem;
 }
 
+/* NEW: eyebrow row with decorative line */
+.eyebrowWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.eyebrowLine {
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Original .eyebrow — margin-bottom now lives on .eyebrowWrap */
 .eyebrow {
   display: inline-block;
   font-family: 'DM Sans', sans-serif;
@@ -88,7 +135,6 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.5rem;
 }
 
 .heroTitle {
@@ -122,12 +168,11 @@
   align-items: center;
 }
 
-/* Scroll hint */
 .scrollHint {
   position: absolute;
   bottom: 2.5rem;
   right: clamp(1.5rem, 5vw, 5rem);
-  z-index: 1;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,7 +207,9 @@
 .btnPrimary,
 .btnGhost,
 .btnLight {
-  display: inline-block;
+  display: inline-flex;   /* flex so svg arrow aligns */
+  align-items: center;
+  gap: 0.55rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
@@ -187,6 +234,13 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(201,168,76,0.3);
 }
+
+/* NEW: arrow slides right on hover */
+.btnPrimary svg {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease);
+}
+.btnPrimary:hover svg { transform: translateX(3px); }
 
 .btnGhost {
   background: transparent;
@@ -216,29 +270,41 @@
    STATS BAND
 ══════════════════════════════ */
 .stats {
+  position: relative;       /* needed for image + overlay */
+  overflow: hidden;
   background: var(--ink-2);
   border-top: 1px solid rgba(201,168,76,0.15);
   border-bottom: 1px solid rgba(201,168,76,0.15);
 }
 
+/* NEW: optional background image */
+.statsBgImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* NEW: overlay that preserves text legibility */
+.statsOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(22,22,22,0.96) 0%,
+    rgba(22,22,22,0.84) 50%,
+    rgba(22,22,22,0.96) 100%
+  );
+}
+
 .statsInner {
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 5rem);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 768px) {
-  .statsInner {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .statsInner {
-    grid-template-columns: 1fr;
-  }
 }
 
 .stat {
@@ -251,9 +317,7 @@
   position: relative;
 }
 
-.stat:last-child {
-  border-right: none;
-}
+.stat:last-child { border-right: none; }
 
 .statValue {
   font-family: 'Cormorant Garamond', serif;
@@ -373,11 +437,32 @@
    ABOUT / VIDEO
 ══════════════════════════════ */
 .about {
+  position: relative;    /* needed for bg image */
+  overflow: hidden;
   background: var(--ink-2);
   padding: clamp(4rem, 8vw, 9rem) 0;
 }
 
+/* NEW: portrait image panel on the left */
+.aboutBgImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 38%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* NEW: fades the about bg image into the section colour */
+.aboutBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(22,22,22,0.45) 0%, var(--ink-2) 100%);
+}
+
 .aboutInner {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 5rem);
@@ -385,12 +470,6 @@
   grid-template-columns: 1fr 1.25fr;
   align-items: center;
   gap: clamp(3rem, 6vw, 7rem);
-}
-
-@media (max-width: 900px) {
-  .aboutInner {
-    grid-template-columns: 1fr;
-  }
 }
 
 .aboutCopy {
@@ -408,7 +487,40 @@
   margin: 0;
 }
 
-/* Video */
+/* NEW: trust indicator checklist */
+.trustList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(245,240,232,0.6);
+  letter-spacing: 0.02em;
+}
+
+.trustCheck {
+  font-size: 0.65rem;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .videoWrap {
   position: relative;
 }
@@ -432,7 +544,6 @@
   border: none;
 }
 
-/* Decorative offset border */
 .videoAccent {
   position: absolute;
   bottom: -1.25rem;
@@ -457,9 +568,24 @@
   padding: clamp(5rem, 10vw, 10rem) 0;
 }
 
+/* NEW: full-bleed background image */
+.ctaBgImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* NEW: overlay on top of cta image */
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.72) 100%);
+}
+
 .ctaInner {
   position: relative;
-  z-index: 1;
+  z-index: 2;   /* above ctaOverlay */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 5rem);
@@ -495,12 +621,13 @@
   margin: 0;
 }
 
-/* Large decorative background number */
+/* Decorative background numeral — original position preserved */
 .ctaBg {
   position: absolute;
   right: -2rem;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;  /* above ctaOverlay so it's still visible */
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
   font-size: clamp(14rem, 25vw, 22rem);
@@ -509,4 +636,71 @@
   user-select: none;
   pointer-events: none;
   letter-spacing: -0.05em;
+}
+
+
+/* ══════════════════════════════
+   RESPONSIVE — original breakpoints preserved
+══════════════════════════════ */
+@media (max-width: 900px) {
+  .aboutInner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack about bg image as a top strip */
+  .aboutBgImage {
+    width: 100%;
+    height: 35%;
+  }
+  .aboutBgOverlay {
+    background: linear-gradient(to bottom, rgba(22,22,22,0.45) 0%, var(--ink-2) 80%);
+  }
+
+  .featuredHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .statsInner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .stat:nth-child(odd) {
+    border-right: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .stat:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsInner {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .stat:last-child {
+    border-bottom: none;
+  }
+
+  .heroCta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scrollHint {
+    display: none;
+  }
 }

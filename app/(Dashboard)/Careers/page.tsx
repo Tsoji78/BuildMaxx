@@ -13,7 +13,7 @@ export default function Careers() {
       <section
         className="page-hero page-hero-img"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920)',
+          backgroundImage: 'url("/assets/p17.jpg")',
         }}
       >
         <div className="page-hero-overlay" />
