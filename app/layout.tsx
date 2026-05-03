@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'BuildMax',
   },
+  icons: {
+    icon: '/assets/maxlogo1.png',
+  },
 };
 
 export const viewport: Viewport = {
