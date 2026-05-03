@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Certification } from './types';
 import PageSection from '@/components/PageSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import PdfModal from './PdfModal';
@@ -45,8 +46,8 @@ const CATEGORY_COLORS = {
 const allCategories = ['All', ...new Set(certifications.map((c) => c.category))];
 
 // Thin horizontal seal strip used as certificate decoration
-function SealStrip({ category }) {
-  const colors = CATEGORY_COLORS[category] || { dot: '#94A3B8' };
+function SealStrip({ category }: { category: string }) {
+  const colors = CATEGORY_COLORS[category as keyof typeof CATEGORY_COLORS] || { dot: '#94A3B8' };
   return (
     <div style={{
       display: 'flex',
@@ -75,8 +76,8 @@ function SealStrip({ category }) {
   );
 }
 
-function CategoryBadge({ category }) {
-  const colors = CATEGORY_COLORS[category] || { bg: '#F1F5F9', text: '#475569', dot: '#94A3B8' };
+function CategoryBadge({ category }: { category: string }) {
+  const colors = CATEGORY_COLORS[category as keyof typeof CATEGORY_COLORS] || { bg: '#F1F5F9', text: '#475569', dot: '#94A3B8' };
   return (
     <span style={{
       display: 'inline-flex',
@@ -97,7 +98,7 @@ function CategoryBadge({ category }) {
   );
 }
 
-function CertCard({ cert, onClick }) {
+function CertCard({ cert, onClick }: { cert: Certification; onClick: () => void }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -269,7 +270,7 @@ function CertCard({ cert, onClick }) {
 
 export default function Certifications() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   const filteredCerts = activeCategory === 'All'
     ? certifications
